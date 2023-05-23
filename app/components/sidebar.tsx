@@ -124,7 +124,9 @@ export function SideBar(props: { className?: string }) {
       <div className={styles["sidebar-header"]}>
         <div className={styles["sidebar-title"]}>开始聊天吧</div>
         <div className={styles["sidebar-sub-title"]}>
-          可以在设置页使用你自己的OpenAiKey(如果你有的话).
+          本站免费使用,如遇收费说明你被骗了😄
+          <br />
+          关注公众号「随记随看」，获取更多关于ChatGPT新闻与免费体验网站！
         </div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
           <ChatGptIcon />
@@ -173,7 +175,7 @@ export function SideBar(props: { className?: string }) {
           </div>
           <div className={styles["sidebar-action"]}>
             <Link to={Path.Settings}>
-              <IconButton icon={<SettingsIcon />} shadow />
+              <IconButton title="设置" icon={<SettingsIcon />} shadow />
             </Link>
           </div>
           <div className={styles["sidebar-action"]}>
