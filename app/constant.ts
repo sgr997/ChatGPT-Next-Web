@@ -14,6 +14,7 @@ export enum Path {
   Settings = "/settings",
   NewChat = "/new-chat",
   Masks = "/masks",
+  Auth = "/auth",
 }
 
 export enum SlotID {
@@ -43,3 +44,5 @@ export const ACCESS_CODE_PREFIX = "ak-";
 export const LAST_INPUT_KEY = "last-input";
 
 export const REQUEST_TIMEOUT_MS = 60000;
+
+export const EXPORT_MESSAGE_CLASS_NAME = "export-markdown";
