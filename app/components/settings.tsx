@@ -37,6 +37,8 @@ import Locale, {
   changeLang,
   getLang,
 } from "../locales";
+
+import { REPO_URL } from "../constant";
 import { copyToClipboard } from "../utils";
 import Link from "next/link";
 import { Path, UPDATE_URL } from "../constant";
@@ -557,6 +559,15 @@ export function Settings() {
               ></input>
             </ListItem>
           ) : null}
+        </List>
+
+        <List>
+          <ListItem title="项目仓库地址" subTitle={REPO_URL}></ListItem>
+
+          <ListItem
+            title="本项目仓库地址"
+            subTitle="https://github.com/sgr997/ChatGPT-Next-Web"
+          ></ListItem>
         </List>
 
         <List>
