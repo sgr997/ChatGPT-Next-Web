@@ -713,7 +713,7 @@ export function Settings() {
             ></input>
           </ListItem>
         </List>
-        、
+      
         <SyncItems />
         <List>
           <ModelConfigList
