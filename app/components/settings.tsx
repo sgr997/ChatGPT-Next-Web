@@ -38,6 +38,8 @@ import Locale, {
   changeLang,
   getLang,
 } from "../locales";
+
+import { REPO_URL } from "../constant";
 import { copyToClipboard } from "../utils";
 import Link from "next/link";
 import { Path, RELEASE_URL, UPDATE_URL } from "../constant";
@@ -545,7 +547,6 @@ export function Settings() {
             ></input>
           </ListItem>
         </List>
-
         <List>
           <ListItem
             title={Locale.Settings.Mask.Splash.Title}
@@ -580,7 +581,6 @@ export function Settings() {
             ></input>
           </ListItem>
         </List>
-
         <List>
           <ListItem
             title={Locale.Settings.Prompt.Disable.Title}
@@ -612,7 +612,6 @@ export function Settings() {
             />
           </ListItem>
         </List>
-
         <List>
           {showAccessCode ? (
             <ListItem
@@ -688,7 +687,16 @@ export function Settings() {
               )}
             </ListItem>
           ) : null}
+        </List>
+        <List>
+          <ListItem title="项目仓库地址" subTitle={REPO_URL}></ListItem>
 
+          <ListItem
+            title="本项目仓库地址"
+            subTitle="https://github.com/sgr997/ChatGPT-Next-Web"
+          ></ListItem>
+        </List>
+        <List>
           <ListItem
             title={Locale.Settings.CustomModel.Title}
             subTitle={Locale.Settings.CustomModel.SubTitle}
@@ -705,9 +713,8 @@ export function Settings() {
             ></input>
           </ListItem>
         </List>
-
+      
         <SyncItems />
-
         <List>
           <ModelConfigList
             modelConfig={config.modelConfig}
@@ -718,11 +725,9 @@ export function Settings() {
             }}
           />
         </List>
-
         {shouldShowPromptModal && (
           <UserPromptModal onClose={() => setShowPromptModal(false)} />
         )}
-
         <DangerItems />
       </div>
     </ErrorBoundary>
