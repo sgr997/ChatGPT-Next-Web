@@ -3,6 +3,8 @@ import {
   DEFAULT_MODELS,
   OpenaiPath,
   REQUEST_TIMEOUT_MS,
+  DEFAULT_USE_OPENAI,
+  BASE_URL,
 } from "@/app/constant";
 import { useAccessStore, useAppConfig, useChatStore } from "@/app/store";
 
@@ -28,6 +30,11 @@ export class ChatGPTApi implements LLMApi {
 
   path(path: string): string {
     let openaiUrl = useAccessStore.getState().openaiUrl;
+    console.log(`[OpenAi URL] ${openaiUrl}`);
+
+    if (!openaiUrl && DEFAULT_USE_OPENAI === "false") {
+      openaiUrl = BASE_URL;
+    }
     if (openaiUrl.length === 0) {
       openaiUrl = DEFAULT_API_HOST;
     }

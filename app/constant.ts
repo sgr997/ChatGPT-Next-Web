@@ -7,7 +7,9 @@ export const RELEASE_URL = `${REPO_URL}/releases`;
 export const FETCH_COMMIT_URL = `https://api.github.com/repos/${OWNER}/${REPO}/commits?per_page=1`;
 export const FETCH_TAG_URL = `https://api.github.com/repos/${OWNER}/${REPO}/tags?per_page=1`;
 export const RUNTIME_CONFIG_DOM = "danger-runtime-config";
-export const BLOG_URL = process.env.BASE_URL || `https://blog.goku.top`;
+export const BLOG_URL = process.env.BLOG_URL || `https://blog.goku.top`;
+export const BASE_URL = process.env.BASE_URL || "";
+export const DEFAULT_USE_OPENAI = process.env.DEFAULT_USE_OPENAI || "false";
 export const DEFAULT_API_HOST = "https://chatgpt1.nextweb.fun/api/proxy";
 
 export enum Path {
