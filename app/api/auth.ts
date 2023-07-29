@@ -24,6 +24,18 @@ function parseApiKey(bearToken: string) {
   };
 }
 
+function replaceBetween(str: string, start: number, end: number) {
+  if (start < 0 || end >= str.length || start > end) {
+    return str;
+  }
+
+  const prefix = str.substring(0, start);
+  const suffix = str.substring(end + 1);
+  const replacement = "*".repeat(end - start + 1);
+
+  return prefix + replacement + suffix;
+}
+
 export function auth(req: NextRequest) {
   const authToken = req.headers.get("Authorization") ?? "";
 
@@ -50,8 +62,10 @@ export function auth(req: NextRequest) {
   if (!token) {
     const apiKey = serverConfig.apiKey;
     if (apiKey) {
-      console.log("[Auth] use system api key");
-      req.headers.set("Authorization", `Bearer ${apiKey}`);
+      console.log(
+        `[Auth] use system api key:${replaceBetween(apiKey, 10, 30)}`,
+      );
+      req.headers.set("Authorization", `Bearer ${apiKey.trim()}`);
     } else {
       console.log("[Auth] admin did not provide an api key");
     }

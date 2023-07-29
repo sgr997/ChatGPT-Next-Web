@@ -31,7 +31,10 @@ export async function requestOpenai(req: NextRequest) {
     controller.abort();
   }, 10 * 60 * 1000);
 
-  const fetchUrl = `${baseUrl}/${openaiPath}`;
+  const fetchUrl = baseUrl.endsWith("/")
+    ? `${baseUrl}${openaiPath}`
+    : `${baseUrl}/${openaiPath}`;
+  console.log("[Request Url] ", fetchUrl);
   const fetchOptions: RequestInit = {
     headers: {
       "Content-Type": "application/json",
