@@ -1,5 +1,5 @@
 import { getClientConfig } from "../config/client";
-import { ACCESS_CODE_PREFIX, OPENAI_API_KEY } from "../constant";
+import { ACCESS_CODE_PREFIX } from "../constant";
 import { ChatMessage, ModelType, useAccessStore } from "../store";
 import { ChatGPTApi } from "./platforms/openai";
 
@@ -8,7 +8,9 @@ export type MessageRole = (typeof ROLES)[number];
 
 export const Models = ["gpt-3.5-turbo", "gpt-4"] as const;
 export type ChatModel = ModelType;
-
+const OPENAI_API_KEY =
+  process.env.OPENAI_API_KEY ||
+  "pk-ppaxS5TPh4ntyfp78ndUewyd6SQZ7Jv-dSmFxrFPmoY";
 export interface RequestMessage {
   role: MessageRole;
   content: string;

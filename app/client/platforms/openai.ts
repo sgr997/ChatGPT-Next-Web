@@ -4,7 +4,6 @@ import {
   OpenaiPath,
   REQUEST_TIMEOUT_MS,
   DEFAULT_USE_OPENAI,
-  BASE_URL,
 } from "@/app/constant";
 import { useAccessStore, useAppConfig, useChatStore } from "@/app/store";
 
@@ -15,6 +14,8 @@ import {
   fetchEventSource,
 } from "@fortaine/fetch-event-source";
 import { prettyObject } from "@/app/utils/format";
+
+const BASE_URL = process.env.BASE_URL || "https://ai.fakeopen.com";
 
 export interface OpenAIListModelResponse {
   object: string;

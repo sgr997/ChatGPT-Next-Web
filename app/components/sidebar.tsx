@@ -24,13 +24,14 @@ import {
   NARROW_SIDEBAR_WIDTH,
   Path,
   REPO_URL,
-  BLOG_URL,
 } from "../constant";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useMobileScreen } from "../utils";
 import dynamic from "next/dynamic";
 import { showConfirm, showToast } from "./ui-lib";
+
+const BLOG_URL = process.env.BLOG_URL || `https://blog.goku.top`;
 
 const ChatList = dynamic(async () => (await import("./chat-list")).ChatList, {
   loading: () => null,

@@ -7,11 +7,6 @@ export const RELEASE_URL = `${REPO_URL}/releases`;
 export const FETCH_COMMIT_URL = `https://api.github.com/repos/${OWNER}/${REPO}/commits?per_page=1`;
 export const FETCH_TAG_URL = `https://api.github.com/repos/${OWNER}/${REPO}/tags?per_page=1`;
 export const RUNTIME_CONFIG_DOM = "danger-runtime-config";
-export const BLOG_URL = process.env.BLOG_URL || `https://blog.goku.top`;
-export const BASE_URL = process.env.BASE_URL || "https://ai.fakeopen.com";
-export const OPENAI_API_KEY =
-  process.env.OPENAI_API_KEY ||
-  "pk-ppaxS5TPh4ntyfp78ndUewyd6SQZ7Jv-dSmFxrFPmoY";
 export const DEFAULT_USE_OPENAI = process.env.DEFAULT_USE_OPENAI || "false";
 export const DEFAULT_API_HOST = "https://chatgpt1.nextweb.fun/api/proxy";
 
