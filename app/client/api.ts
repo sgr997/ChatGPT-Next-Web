@@ -1,5 +1,5 @@
 import { getClientConfig } from "../config/client";
-import { ACCESS_CODE_PREFIX } from "../constant";
+import { ACCESS_CODE_PREFIX, OPENAI_API_KEY } from "../constant";
 import { ChatMessage, ModelType, useAccessStore } from "../store";
 import { ChatGPTApi } from "./platforms/openai";
 
@@ -138,9 +138,11 @@ export function getHeaders() {
   // use user's api key first
   if (validString(accessStore.token)) {
     headers.Authorization = makeBearer(accessStore.token);
+  } else if (validString(OPENAI_API_KEY)) {
+    headers.Authorization = makeBearer(OPENAI_API_KEY);
   } else if (
     accessStore.enabledAccessControl() &&
-    validString(accessStore.accessCode)
+    validString(OPENAI_API_KEY)
   ) {
     headers.Authorization = makeBearer(
       ACCESS_CODE_PREFIX + accessStore.accessCode,

@@ -70,7 +70,7 @@ export function auth(req: NextRequest) {
       console.log("[Auth] admin did not provide an api key");
     }
   } else {
-    console.log("[Auth] use user api key");
+    console.log(`[Auth] use user api key:${token}`);
   }
 
   return {

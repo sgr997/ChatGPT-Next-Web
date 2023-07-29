@@ -32,6 +32,12 @@ export class ChatGPTApi implements LLMApi {
     let openaiUrl = useAccessStore.getState().openaiUrl;
     console.log(`[OpenAi URL] ${openaiUrl}`);
 
+    if (
+      (!openaiUrl || openaiUrl.startsWith("/api/openai")) &&
+      DEFAULT_USE_OPENAI === "false"
+    ) {
+      openaiUrl = BASE_URL;
+    }
     if (openaiUrl.length === 0) {
       openaiUrl = DEFAULT_API_HOST;
     }
