@@ -178,11 +178,11 @@ export function SideBar(props: { className?: string }) {
               <IconButton title="设置" icon={<SettingsIcon />} shadow />
             </Link>
           </div>
-          <div className={styles["sidebar-action"]}>
-            <a href={BLOG_URL} target="_blank">
-              <IconButton title="关于我" icon={<BlogIcon />} shadow />
-            </a>
-          </div>
+          {/*<div className={styles["sidebar-action"]}>*/}
+          {/*  <a href={BLOG_URL} target="_blank">*/}
+          {/*    <IconButton title="关于我" icon={<BlogIcon />} shadow />*/}
+          {/*  </a>*/}
+          {/*</div>*/}
           <div className={styles["sidebar-action"]}>
             <a href="https://blog.goku.top/img/alipay.jpeg" target="_blank">
               <IconButton
