@@ -144,7 +144,7 @@ export function getHeaders() {
     headers.Authorization = makeBearer(OPENAI_API_KEY);
   } else if (
     accessStore.enabledAccessControl() &&
-    validString(OPENAI_API_KEY)
+    validString(accessStore.accessCode)
   ) {
     headers.Authorization = makeBearer(
       ACCESS_CODE_PREFIX + accessStore.accessCode,
