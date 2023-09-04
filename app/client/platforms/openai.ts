@@ -15,6 +15,7 @@ import {
   fetchEventSource,
 } from "@fortaine/fetch-event-source";
 import { prettyObject } from "@/app/utils/format";
+import { getClientConfig } from "@/app/config/client";
 
 export interface OpenAIListModelResponse {
   object: string;
@@ -30,15 +31,18 @@ export class ChatGPTApi implements LLMApi {
 
   path(path: string): string {
     let openaiUrl = useAccessStore.getState().openaiUrl;
+    const apiPath = "/api/openai";
+
     console.log(`[OpenAi URL] ${openaiUrl}`);
 
     if (openaiUrl.length === 0) {
-      openaiUrl = DEFAULT_API_HOST;
+      const isApp = !!getClientConfig()?.isApp;
+      openaiUrl = isApp ? DEFAULT_API_HOST : apiPath;
     }
     if (openaiUrl.endsWith("/")) {
       openaiUrl = openaiUrl.slice(0, openaiUrl.length - 1);
     }
-    if (!openaiUrl.startsWith("http") && !openaiUrl.startsWith("/api/openai")) {
+    if (!openaiUrl.startsWith("http") && !openaiUrl.startsWith(apiPath)) {
       openaiUrl = "https://" + openaiUrl;
     }
     return [openaiUrl, path].join("/");
@@ -182,7 +186,7 @@ export class ChatGPTApi implements LLMApi {
         options.onFinish(message);
       }
     } catch (e) {
-      console.log("[Request] failed to make a chat reqeust", e);
+      console.log("[Request] failed to make a chat request", e);
       options.onError?.(e as Error);
     }
   }
